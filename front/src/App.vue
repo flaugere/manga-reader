@@ -6,6 +6,7 @@ import Reader from './components/Reader.vue'
 // Mock data
 const comic : Comic = ref({
   id: 1,
+  logo: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/Jujutsu_Kaisen_logo_in_Japan.png',
   name: 'Jujutsu kaisen',
   image: 'https://aiptcomics.com/wp-content/uploads/2021/01/9A2AF4F6-D25A-4F18-A9A9-455F38B0B174.jpeg',
   groups: [{
