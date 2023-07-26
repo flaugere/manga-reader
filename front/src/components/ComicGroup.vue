@@ -9,6 +9,6 @@ const props = defineProps({group: Group })
 <template>
   <div class="container mx-auto px-10">
     <h2>{{ props.group.name }}</h2>
-    <div v-for="page in props.group.pages">{{ page.image }}</div>
+    <div v-for="page in props.group.pages"><img :src="page.image" /></div>
   </div>
 </template>

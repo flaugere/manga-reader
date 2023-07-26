@@ -21,7 +21,6 @@ let groupToPrint : Group = ref(null);
     <div class="title-select" v-for="group in props.comic.groups" @click.prevent="groupToPrint = group">
       {{ group.name }}
     </div>
-    <img v-if="groupToPrint?.name" :src="groupToPrint?.pages[0].image" />
-    <!-- <comic-group v-if="groupToPrint?.name" :group="groupToPrint" /> -->
+    <comic-group v-if="groupToPrint?.name" :group="groupToPrint" />
   </div>
 </template>
