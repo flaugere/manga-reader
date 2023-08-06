@@ -1,51 +1,41 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import AdmZip from 'adm-zip';
 import * as fs from 'fs';
+import { FileService } from '../service/file.service';
+import { Group, Comic, Page } from 'comic';
 
 @Injectable()
-ComicFactory {
-    function create (comicRootPath : string) {
-        // Lit le répertoire
-        const title : string = subDirectoryName;
-        const group : string = subSubDirectoryName;
-        // Pour chaque élément du sous répertoire, je crée une page
-        let number = 0;
-        const page : Page = {
-            number:  number,
-            image: lienVersImage
-        }
-    }
+export class ComicFactory {
+  constructor(private fileService: FileService) {}
 
-    /**
-     * Prepare file from CBZ package
-     * 
-     * @param path Path to read from
-     */
-    private async function readDirectory(path: string) {
-      await fs.readdir(path, async (err, files) => {
-        if (err) {
-          console.error('Error reading directory:', err);
-          return;
-        }
-        files.forEach(async (file) => {
-          const fullPath = `${path}/${file}`;
-          if (this.isDirectory(fullPath)) {
-            this.readDirectory(fullPath);
-            return;
-          }
-          await this.readCBZFile(fullPath);
+  async create(comicRootPath: string) {
+    const result = comicRootPath.split('/');
+    const title: string = result.pop();
+    const groupNames: Array<string> = await fs.promises.readdir(comicRootPath);
+    const groups: Array<Group> = [];
+    for (const [index, group] of groupNames.entries()) {
+      const basePath = `${comicRootPath}/${group}`;
+      const files = await this.fileService.getFiles(basePath);
+      const pages: Array<Page> = [];
+      files.forEach((file, indexFile) => {
+        pages.push({
+          number: indexFile,
+          image: `${title}/${group}/${file}`,
         });
       });
+      groups.push({
+        name: group,
+        order: index,
+        pages: pages,
+      });
     }
-  
-    private function isDirectory(path: string): boolean {
-      try {
-        const stats = fs.statSync(path);
-        return stats.isDirectory();
-      } catch (error) {
-        console.error('Error while checking if entity is a directory:', error);
-        return false;
-      }
-    }
+
+    const comic: Comic = {
+      id: 0,
+      name: title,
+      image: groups[0]?.pages[0].image,
+      groups: groups,
+    };
+
+    return comic;
+  }
 }
