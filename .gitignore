@@ -2,6 +2,7 @@ node_modules
 **/node_modules/
 .local
 .cache
+.turbo
 .pnpm-store
 .bash_history
 comics/

@@ -25,7 +25,7 @@
     "@nestjs/core": "^9.4.3",
     "@nestjs/platform-express": "^9.4.3",
     "adm-zip": "^0.5.10",
-    "comic": "workspace:^1.0.0",
+    "comic": "workspace:^",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1"
   },

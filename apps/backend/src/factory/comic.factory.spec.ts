@@ -28,14 +28,14 @@ describe('ComicFactory', () => {
             name: 'volume 1',
             order: 0,
             pages: [
-              { image: 'image.jpg', number: 0 },
-              { image: 'image2.jpg', number: 1 },
+              { image: 'boku no hero/volume 1/image.jpg', number: 0 },
+              { image: 'boku no hero/volume 1/image2.jpg', number: 1 },
             ],
           },
           { name: 'volume 2', order: 1, pages: [] },
         ],
         id: 0,
-        image: 'image.jpg',
+        image: 'boku no hero/volume 1/image.jpg',
         name: 'boku no hero',
       });
     });
