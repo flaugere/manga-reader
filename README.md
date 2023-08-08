@@ -2,13 +2,17 @@
 
 ## Requirements
 
-nodejs + pnpm installed  
+nodejs > v18 + pnpm installed  
 
-## ToDo
+## How to start
 
-Backend doit pouvoir réception des liens magnet pour enrichir la base
-Backend doit lire les CBZ puis les mettre en base de donnée
-Préparer un docker-compose pour avoir une base de donnée sur laquelle mettre les datas ? Sinon IPFS avec lecture des répertoires seulement ?
+### Dev mode
+
+`pnpm run dev`
+
+### Test mode
+
+`pnpm run test`
 
 ## Design API
 
