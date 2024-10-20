@@ -8,6 +8,9 @@
     "build": "tsc --incremental",
     "start:dev": "tsc -w --incremental"
   },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"

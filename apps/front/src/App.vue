@@ -3,6 +3,8 @@ import { Comic } from 'comic'
 import { ref } from 'vue'
 import Reader from './components/Reader.vue'
 
+// Ici il faut récupérer les datas du backend
+const comics = [];
 // Mock data
 const comic : Comic = ref({
   id: 1,
